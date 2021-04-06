@@ -1,5 +1,6 @@
 # plotly-challenge
 Belly Button Biodiversity
+<<<<<<< HEAD
 
 // hovermode //
 layout = {
@@ -8,3 +9,6 @@ layout = {
      };
 
 Plotly.newPlot('myDiv', data, layout);
+=======
+https://tarapolli.github.io/plotly-challenge/
+>>>>>>> cd831f99b5604880a51b57167754f6b387ea8ed8
