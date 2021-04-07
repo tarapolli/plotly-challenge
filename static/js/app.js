@@ -41,9 +41,35 @@ function buildPlot(sample) {
         marker: {
         size: sample_values,
         color: otu_ids,
-        colorscale:"Electric"
+        colorscale:"Rainbow"
         }
     };
+
+// get the op 10 OTUs found in each individual
+    // var otu_10 = otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
+    // console.log(otu_ids);
+    // // get corresponding top 10 labels for each OTU
+    // var labels = otu_labels.slice(0,10).reverse();
+    // var otu_10 = otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse();
+
+    // -----------------
+    // Getting the top 10 
+    var sample_values_10 = result.sample_values.slice(0, 10).reverse();
+    console.log("top 10 sample: " + sample_values_10);
+
+    // // get only top 10 otu ids for the plot OTU and reversing it. 
+    var OTU = (result.otu_ids.slice(0, 10)).reverse();
+ 
+    // // get the otu id's to the desired form for the plot
+    var OTU_id = OTU.map(d => "OTU " + d)
+    console.log("OTU IDS: " + OTU_id);
+
+    // // get the top 10 labels for the plot and reversing it.
+    var labels = result.otu_labels.slice(0, 10).reverse();
+    console.log("labels: " + labels);
+
+
+
     var data = [trace1];
     var layout = {
         title: 'Bacteria Cultures per Sample',
@@ -56,9 +82,12 @@ function buildPlot(sample) {
     // passing in graph data to render bubble plot
     Plotly.newPlot('bubble', data, layout); 
     var trace1 = {
-        x: sample_values.slice(0,10).reverse(),
-        y: otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
-        text: otu_labels.slice(0,10).reverse(),
+        // // x: sample_values.slice(0,10).reverse(),
+        x: sample_values_10,
+        // y: otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
+        y: OTU_id,
+        // text: otu_labels.slice(0,10).reverse(),
+        text: labels,
         name: "Sample Detail",
         type: "bar",
         orientation: "h"
@@ -92,37 +121,13 @@ function buildPlot(sample) {
 
         })
     
-    // var data = [
-    //   {
-    //     domain: { x: [0, 1], y: [0, 1] },
-    //     marker: {size: 28, color:'850000'},
-    //     value: result.wfreq,
-    //     title: 'Belly Button Washing Frequency<br> Scrubs per Week',
-    //     titlefont: {family: '"Arial, Helvetica, sans-serif'},
-    //     type: "indicator",
-    //     gauge: { axis: { visible: true, range: [0, 9] } },
-    //     mode: "number+gauge"
-    //   }
-    // ];
-  
-    // var layout = {
-    //   width: 600,
-    //    height: 450,
-    //    margin: { t: 100, r: 100, l: 100, b: 100 },
-    //    line: {
-    //    color: '600000'
-    //    },
-    //    font: { color: "#49a81d", family: "Arial, Helvetica, sans-serif" }
-    //  };
-  
-    
-    // Plotly.newPlot("gauge", data, layout);
+
     });
   }
   
-  function optionChanged(newSample) {
-    updateMetadata(newSample);
-    buildPlot(newSample);
+  function optionChanged(selectNew) {
+    updateMetadata(selectNew);
+    buildPlot(selectNew);
   }
   
   init();
