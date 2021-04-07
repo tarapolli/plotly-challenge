@@ -15,10 +15,10 @@ var metadata = data.metadata;
 
   // Call updatePlotly() when a change takes place to the DOM
 // d3.selectAll("#selDataset").on("change", updatePlotly);
-d3.selectAll("#selDataset").on("change", optionChanged);
+d3.select("#selDataset").on("change", optionChanged);
 
 // This function is called when a dropdown menu item is selected
-function optionChanged() {
+function updatePlotly() {
   // Use D3 to select the dropdown menu
   var dropdownMenu = d3.select("#selDataset");
   // Assign the value of the dropdown menu option to a variable
@@ -72,6 +72,6 @@ var labels = Object.keys(data.names);
 });
 
 function optionChanged(newSample) {
-  updateMetadata(newSample);
+  // updateMetadata(newSample);
   updateCharts(newSample);
 }

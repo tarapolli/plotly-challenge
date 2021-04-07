@@ -27,7 +27,12 @@ function buildPlot(sample) {
     var result = filterData[0];
     var sample_values = result.sample_values;
     var otu_ids = result.otu_ids;
-    var otu_labels = result.otu_labels;   
+    var otu_labels = result.otu_labels;
+    // console.log(result);
+    // console.log(sample_values);
+    // console.log(otu_ids);
+    // console.log(otu_labels);   
+    
     var trace1 = {
         x: otu_ids,
         y: sample_values,
