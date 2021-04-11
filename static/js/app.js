@@ -23,9 +23,7 @@ function buildPlot(sample) {
     // Grab values from the json object to build the plots
     d3.json("data/samples.json").then((data) => {
     var samples = data.samples;
-    // var personData = data.samples;
     var filterData = samples.filter(sampleObject => sampleObject.id == sample);
-    // var filterData = samples.filter(sampleObject => sampleObject.id == personData);
     var result = filterData[0];
     var sample_values = result.sample_values;
     var otu_ids = result.otu_ids;
