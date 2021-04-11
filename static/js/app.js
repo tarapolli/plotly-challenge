@@ -43,7 +43,7 @@ function buildPlot(sample) {
         marker: {
         size: sample_values,
         color: otu_ids,
-        colorscale:"Rainbow"
+        colorscale:"Rainbow",
         }
     };
 
@@ -105,7 +105,7 @@ function buildPlot(sample) {
         })
     });
   }
-  // fresh; allow user to select new Test Subject ID no.
+  // refresh; allow user to select new Test Subject ID no.
   function optionChanged(selectNew) {
     updateMetadata(selectNew);
     buildPlot(selectNew);
